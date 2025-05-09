@@ -2,7 +2,7 @@
 
 Here are the results for round one of the DPA Cup. As promised, the results have been anonymized. To find out how you performed, check your submission feedback on Moodle to see your hidden ID. The two entries marked **ref** and **imp** are the two solutions added to the __exercise_sheet_1_5__ folder with the same names.
 
-All experiments were done on an AMD EPYC 9754 128-Core Processor. Each configuration was tested **8** times, and the fastest run was used. Unlike the default value set in the main.c file, we increased $n$ to **$2^{30}$** for these experiments.
+All experiments were done on an AMD EPYC 9754 128-Core Processor. Each configuration was tested $8$ times, and the fastest run was used. Unlike the default value set in the main.c file, we increased $n$ to $2^{30}$ for these experiments.
 
 The first table gives the absolute running times in seconds. Having the lowest value in the 128 column is what matters for the competition. With that being said, remember that this first exercise will not count fully towards the final results.
 
