@@ -1,0 +1,63 @@
+\documentclass[tikz, convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+
+\usepgfplotslibrary{colormaps}
+\usetikzlibrary{pgfplots.colorbrewer}
+
+\pgfplotsset{
+    cycle list/.define={my marks}{
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=square*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=triangle*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=diamond*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=halfcircle*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}, mark options={rotate=90}, scale=1.25},mark=halfsquare right*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=triangle*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=halfdiamond*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=10-pointed star\\        
+    },
+    perf/.style={
+        axis lines=middle, 
+        axis x line*=bottom,
+        axis y line*=left,
+        cycle list/Dark2,
+        cycle multiindex* list={
+                my marks\nextlist
+                Dark2\nextlist
+                linestyles\nextlist
+            },
+        mark list fill={.!75!white},
+        tick label style={font=\footnotesize},
+        x axis line style={-},
+        y axis line style={-}
+    }
+}
+
+\pgfplotstableread[col sep=comma]{../data/absolute_speedup.csv}\Data
+\pgfplotstabletranspose[colnames from=IDP, input colnames to=IDP]\TransposedData\Data
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[perf, legend style={
+                    legend columns=6, font=\footnotesize,
+                    at={(0.5,-0.1)}, anchor=north, draw=none
+                },
+            xlabel=$P$,
+            ylabel=$T_{ref 1} / T_p$,
+            xmode=log, log basis x=2,
+            ymode=log, log basis y=2,
+            xticklabels={1,2,4,8,16,32,64,128}]
+        \addplot+[] table[x=IDP,y=ref]{\TransposedData};
+        \addlegendentry{ref}
+        \addplot+[] table[x=IDP,y=imp]{\TransposedData};
+        \addlegendentry{imp}
+        \pgfplotsinvokeforeach{1,...,14}{
+            \addplot+[] table[x=IDP,y=#1]{\TransposedData};
+            \addlegendentry{#1}
+        }
+    \end{axis}
+\end{tikzpicture}
+\end{document}
