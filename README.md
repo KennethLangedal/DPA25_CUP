@@ -22,7 +22,7 @@ To know your team's ID, check the feedback on Moodle.
 | 12 | 5.5 |
 | 5 | 5 |
 | 3 | 4.5 |
-| ref | 4 |
-| imp | 3.5 |
+| imp | 4 |
+| ref | 3.5 |
 | 1 | 3 |
 | 6 | 2.5 |
