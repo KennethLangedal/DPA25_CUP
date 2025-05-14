@@ -1,7 +1,5 @@
 # Optional Homework 2.5
 
-## NB: This repository could change until the 14th of May
-
 Matrix multiplication is a fundamental operation in linear algebra with widespread applications in mathematics, computer science, physics, and engineering. Most notably, matrix multiplication is the core computation of virtually every machine learning model.
 
 For the second **optional** homework, you should write a shared memory parallel implementation of matrix multiplication. You can assume that the **A**, **B**, and **C** matrices are all size $n \times n$. Recall that the computation for each element $C_{ij}$ is equal to $\sum_{k=0}^{n - 1}A_{ik}B_{kj}$. See the image below for clarification.
@@ -40,7 +38,7 @@ Using n=1024
   4,     2.1148,     3.2192,     1.0155
   6,     1.5137,     4.4975,     1.4187
 ```
-Where **P** is the number of threads used, **T** is the time spent in seconds, **S_rel** is the relative speedup, and **GFLOPS** is the number of giga floating-point operations per second, based on the $\mathcal{O}(n^3)$ algorithm. The program will output a warning if it detects a likely error in your computation. Please let us know if you find any bugs with this validator, as you get the warning even if you know your results are correct. The value of **n** is set as a constant in the main.c file, feel free to change this value during testing, as well as the **NUM_RUNS** constant. For the final testing, we will increase these values to ensure a fair evaluation.
+Where **P** is the number of threads used, **T** is the time spent in seconds, **S_rel** is the relative speedup, and **GFLOPS** is the number of giga floating-point operations per second, based on the $\mathcal{O}(n^3)$ algorithm. The program will output a warning if it detects a likely error in your computation. Please let us know if you find any bugs with this validator, as in you get the warning even if you know your results are correct. The value of **n** is set as a constant in the main.c file, feel free to change this value during testing, as well as the **NUM_RUNS** constant. For the final testing, we will increase these values to ensure a fair evaluation.
 
 ## The Distributed and Parallel Algorithms Cup
 
