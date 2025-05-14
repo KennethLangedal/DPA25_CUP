@@ -24,7 +24,7 @@ int main(int argc, char **argv)
     double *times = malloc(sizeof(double) * nc);
 
     printf("Using n=%lld\n", N);
-    printf("%3s, %10s, %10s, %10s\n", "P", "T", "S_rel", "GLOPS");
+    printf("%3s, %10s, %10s, %10s\n", "P", "T", "S_rel", "GFLOPS");
 
     float *A = aligned_alloc(32, sizeof(float) * N * N);
     float *B = aligned_alloc(32, sizeof(float) * N * N);

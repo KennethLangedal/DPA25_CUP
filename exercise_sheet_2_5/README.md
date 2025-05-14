@@ -4,7 +4,7 @@
 
 Matrix multiplication is a fundamental operation in linear algebra with widespread applications in mathematics, computer science, physics, and engineering. Most notably, matrix multiplication is the core computation of virtually every machine learning model.
 
-For the second **optional** homework, you should implement a shared memory parallel implementation of matrix multiplication. You can assume that the **A**, **B**, and **C** matrices are all size $n \times n$. Recall that the computation for each element $C_{ij}$ is equal to $\sum_{k=0}^{n - 1}A_{ik}B_{kj}$. See the image below for clarification.
+For the second **optional** homework, you should write a shared memory parallel implementation of matrix multiplication. You can assume that the **A**, **B**, and **C** matrices are all size $n \times n$. Recall that the computation for each element $C_{ij}$ is equal to $\sum_{k=0}^{n - 1}A_{ik}B_{kj}$. See the image below for clarification.
 
 ![Illustration](image.png)
 
@@ -34,7 +34,7 @@ This will create an executable file called **prog** that automatically performs 
 Could generate the following output
 ```
 Using n=1024
-  P,          T,      S_rel,      GLOPS
+  P,          T,      S_rel,     GFLOPS
   1,     6.8079,     1.0000,     0.3154
   2,     3.2659,     2.0846,     0.6576
   4,     2.1148,     3.2192,     1.0155
