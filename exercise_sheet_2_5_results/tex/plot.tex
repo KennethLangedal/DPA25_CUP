@@ -42,6 +42,9 @@
 \pgfplotstableread[col sep=comma]{../data/gflops_4216.csv}\DataIntel
 \pgfplotstabletranspose[colnames from=IDP, input colnames to=IDP]\TransposedDataIntel\DataIntel
 
+\pgfplotstableread[col sep=comma]{../data/gflops_9754.csv}\DataAMDEPYC
+\pgfplotstabletranspose[colnames from=IDP, input colnames to=IDP]\TransposedDataAMDEPYC\DataAMDEPYC
+
 \begin{document}
 \begin{tikzpicture}
     \begin{axis}[perf, legend style={
@@ -73,6 +76,23 @@
             xticklabels={1,2,4,8,16}]
         \pgfplotsinvokeforeach{ref,imp,2,3,6,7,8,9,10,11,13,14}{
             \addplot+[] table[x=IDP,y=#1]{\TransposedDataIntel};
+            \addlegendentry{#1}
+        }
+    \end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}
+    \begin{axis}[perf, legend style={
+                    legend columns=6, font=\footnotesize,
+                    at={(0.5,-0.1)}, anchor=north, draw=none
+                },
+            title=AMD EPYC 9754,
+            xlabel=$P$,
+            ylabel=$GFLOPS$,
+            xmode=log, log basis x=2,
+            ymode=log, % log basis y=2,
+            xticklabels={1,2,4,8,16,32,64,128}]
+        \pgfplotsinvokeforeach{ref,imp,2,3,6,7,8,9,10,11,13,14}{
+            \addplot+[] table[x=IDP,y=#1]{\TransposedDataAMDEPYC};
             \addlegendentry{#1}
         }
     \end{axis}
