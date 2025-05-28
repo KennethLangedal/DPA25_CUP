@@ -69,3 +69,24 @@ Lastly, and mostly for fun since there were so many strong submissions, here are
 | ref | 1.00000 | 1.99161 | 3.98925 | 7.98469 | 15.91388 | 31.80009 | 63.42576 | 126.38641 |
 
 ![results](tex/plot.png)
+
+## Points Scored
+
+| ID | Points |
+| -: | -: |
+| 10 | 10 |
+| 2 | 9.5 |
+| 9 | 9 |
+| 13 | 8.5 |
+| 14 | 8 |
+| 8 | 7.5 |
+| 7 | 7 |
+| 11 | 6.5 |
+| 4 | 6 |
+| 12 | 5.5 |
+| 5 | 5 |
+| 3 | 4.5 |
+| imp | 4 |
+| ref | 3.5 |
+| 1 | 3 |
+| 6 | 2.5 |
