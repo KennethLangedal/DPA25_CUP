@@ -1,0 +1,83 @@
+\documentclass[tikz, convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+
+\usepgfplotslibrary{colormaps}
+\usetikzlibrary{pgfplots.colorbrewer}
+
+\pgfplotsset{
+    cycle list/.define={my marks}{
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=square*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=triangle*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=diamond*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=halfcircle*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}, mark options={rotate=90}, scale=1.25},mark=halfsquare right*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=triangle*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=halfdiamond*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=10-pointed star\\        
+    },
+    perf/.style={
+        axis lines=middle, 
+        axis x line*=bottom,
+        axis y line*=left,
+        cycle list/Dark2,
+        cycle multiindex* list={
+                my marks\nextlist
+                Dark2\nextlist
+                linestyles\nextlist
+            },
+        mark list fill={.!75!white},
+        tick label style={font=\footnotesize},
+        x axis line style={-},
+        y axis line style={-}
+    }
+}
+
+\pgfplotstableread[col sep=comma]{../data/time.csv}\Data
+\pgfplotstabletranspose[colnames from=IDP, input colnames to=IDP]\TransposedData\Data
+
+\pgfplotstableread[col sep=comma]{../data/radix.csv}\DataRadix
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[perf, legend style={
+                    legend columns=6, font=\footnotesize,
+                    at={(0.5,-0.2)}, anchor=north, draw=none
+                },
+            title=AMD EPYC 9754{, $n = 2^{27}$},
+            xlabel=$P$,
+            ylabel=$Time (s)$,
+            x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+            y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+            xmode=log, log basis x=2,
+            ymode=log, % log basis y=2,
+            xticklabels={1,2,4,8,16,32,64,128}]
+        \pgfplotsinvokeforeach{radix-1,radix-8,2,3,6,8,9,11,14}{
+            \addplot+[] table[x=IDP,y=#1]{\TransposedData};
+            \addlegendentry{#1}
+        }
+    \end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}
+    \begin{axis}[perf, legend style={
+                    legend columns=6, font=\footnotesize,
+                    at={(0.5,-0.1)}, anchor=north, draw=none
+                },
+            title=Radix Sort{,} {$p = 128$, $n = 2^{27}$},
+            xlabel=$Bits$,
+            ylabel=$Time (s)$,
+            ymax=3,
+            x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+            y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+            % xmode=log, log basis x=2,
+            % ymode=log, log basis y=2,
+            ybar interval=0.7,
+            % xticklabels={1,2,4,8,16,32,64,128}
+            ]
+        \addplot+[] table[x=BITS,y=128]{\DataRadix};
+    \end{axis}
+\end{tikzpicture}
+\end{document}

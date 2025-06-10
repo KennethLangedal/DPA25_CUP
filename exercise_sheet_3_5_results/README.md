@@ -19,6 +19,8 @@ The first table gives the absolute running times in seconds. Having the lowest v
 | radix-8 | 5.4198 | 2.8244 | 1.5820 | 1.0528 | 0.8611 | 0.5088 | 0.2883 | 0.1919 |
 | radix-1 | 30.2697 | 15.1896 | 7.7118 | 6.0483 | 6.0914 | 3.1291 | 2.7966 | 1.8968 |
 
+![results](tex/plot-0.png)
+
 The next table gives the relative speedup $T_1 / T_p$ computed individually for each submission.
 
 | ID / P | 1 | 2 | 4 | 8 | 16 | 32 | 64 | 128 |
@@ -50,3 +52,9 @@ Here are the preliminary points scored for this exercise (awaiting nr. 10).
 | radix-1 | 13 | 1.8968 |
 | 6 | 12 | 15.2567 |
 | 10 | 11 | - |
+
+## Radix Sort
+
+A small extra plot showing the execution time compared to the number of bits used to represent one digit. Note that the number of buckets grows exponentially with the number of bits. However, it also decreases the number of passes needed to sort the array.
+
+![results](tex/plot-1.png)
