@@ -10,7 +10,7 @@ For the fourth **optional** exercise, write a shared memory parallel implementat
 | europe_osm | 50,912,018 | 108,109,320 |
 | rgg_n_2_24_s0 | 16,777,216 | 265,114,400 |
 
-You can download them directly from the [SuiteSparse Matrix Collection](https://sparse.tamu.edu/), or from our own [HeiBOX](https://heibox.uni-heidelberg.de/d/28a5881feafa4b038011/). You can also download smaller instances for testing from the same website.
+You can download them directly from the [SuiteSparse Matrix Collection](https://sparse.tamu.edu/), or from our own [heiBOX](https://heibox.uni-heidelberg.de/d/28a5881feafa4b038011/). You can also download smaller instances for testing from the same website.
 
 As before, you should only write code in the file **your_code.c** and implement the function **bfs**. You are free to look at the main.c file, but any changes you make will not be included in the final testing. 
 
@@ -26,7 +26,7 @@ for (int i = V[u]; i < V[u + 1]; i++) {
 }
 ```
 
-The next three parameters **s**, **D**, and **P**, are the starting vertex, distance array, and parent array. Your algorithm should compute the shortest path from **s** to all other vertices in the graph. The minimum distance between **s** and some vertex $u$ should be stored in $D[u]$, and $P[u]$ should hold the previous vertex on a shortest from **s** to $u$. Note that there are several valid results for **P**, but only one correct solution for **D**.
+The next three parameters **s**, **D**, and **P**, are the starting vertex, distance array, and parent array. Your algorithm should compute the shortest path from **s** to all other vertices in the graph. The minimum distance between **s** and some vertex $u$ should be stored in $D[u]$, and $P[u]$ should hold the previous vertex on a shortest path from **s** to **u**. Note that there are several valid results for **P**, but only one correct solution for **D**.
 
 The final argument is for any additional data you want to use. There are two optional functions defined in the **your_code.c** file this time.
 
@@ -62,7 +62,7 @@ road_usa.mtx, 23947347 vertices, 28854312 edges
   4,     0.2813,     2.0745
   6,     0.2423,     2.4083
 ```
-Where **P** is the number of threads used, **T** is the time spent in seconds, and **S_rel** is the relative speedup. The program will output a warnings if it detects that your solution is not correct. Since this feature adds significant overhead to the running time, it is recommended to disable it for larger instances. We added a **VALIDATE** variable to the main file, changing this to **0** turns off validation.
+Where **P** is the number of threads used, **T** is the time spent in seconds, and **S_rel** is the relative speedup. The program will output a warning if it detects that your solution is not correct. Since this feature adds significant overhead to the running time, it is recommended to disable it for larger instances. We added a **VALIDATE** variable to the main file, changing this to **0** turns off validation.
 
 ## The Distributed and Parallel Algorithms Cup
 
@@ -70,7 +70,7 @@ This is the fourth problem included in the **completely optional** implementatio
 
 ### Scoring
 
-As before, the most important metric is the absolute performance (meaning the **T** column from above). For the final scoring, the submissions will be sorted based on parallel running time using the full machine (128 cores). The fastest submission will score 20 points, the second 19, and so on down to 1. You will accumulate points for each optional exercise, and the the winner in the end is the one with the most points. We plan to have six optional exercises in total. As mentioned, the first optional exercise gives only half the points.
+As before, the most important metric is the absolute performance (meaning the **T** column from above). For the final scoring, the submissions will be sorted based on parallel running time using the full machine (128 cores). The fastest submission will score 20 points, the second 19, and so on down to 1. You will accumulate points for each optional exercise, and the winner in the end is the one with the most points. We plan to have six optional exercises in total. As mentioned, the first optional exercise gives only half the points.
 
 ## Tips and Other Details
 
