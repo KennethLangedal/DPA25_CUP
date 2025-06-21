@@ -55,7 +55,7 @@
             xmode=log, log basis x=2,
             ymode=log, % log basis y=2,
             xticklabels={1,2,4,8,16,32,64,128}]
-        \pgfplotsinvokeforeach{radix-1,radix-8,2,3,6,8,9,11,14}{
+        \pgfplotsinvokeforeach{radix-1,radix-8,2,3,6,8,9,10,11,14}{
             \addplot+[] table[x=IDP,y=#1]{\TransposedData};
             \addlegendentry{#1}
         }
