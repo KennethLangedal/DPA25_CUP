@@ -1,3 +1,5 @@
 .vscode/*
 **/prog
 **/solution.c
+submissions*/*
+run*.sh
