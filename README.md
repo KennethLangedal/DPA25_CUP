@@ -8,19 +8,19 @@ The scoring system we use works as follows. On each exercise, the submissions ar
 
 To know your team's ID, check the feedback from the first round on Moodle.
 
-| ID | Points |
-| -: | -: |
-| 10 | 84 |
-| 2 | 76.5 |
-| 6 | 62.5 |
-| 9 | 54 |
-| 11 | 53.5 |
-| 3 | 46.5 |
-| 14 | 38 |
-| 8 | 37.5 |
-| 13 | 25.5 |
-| 7 | 17 |
-| 4 | 6 |
-| 12 | 5.5 |
-| 5 | 5 |
-| 1 | 3 |
+| ID | Points | |
+| -: | -: | -: |
+| 10 | 103| &#129351; |
+| 2 | 93.5 | &#129352; |
+| 6 | 82.5 | &#129353; |
+| 9 | 54 | |
+| 11 | 53.5 | |
+| 3 | 46.5 | |
+| 14 | 38 | |
+| 8 | 37.5 | |
+| 13 | 25.5 | |
+| 7 | 17 | |
+| 4 | 6 | |
+| 12 | 5.5 | |
+| 5 | 5 | |
+| 1 | 3 | |

@@ -1,0 +1,161 @@
+\documentclass[tikz, convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+
+\usepgfplotslibrary{colormaps}
+\usetikzlibrary{pgfplots.colorbrewer}
+
+\pgfplotsset{
+    cycle list/.define={my marks}{
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=square*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=triangle*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=diamond*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=halfcircle*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}, mark options={rotate=90}, scale=1.25},mark=halfsquare right*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=triangle*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=halfdiamond*\\
+        every mark/.append style={solid,fill=\pgfkeysvalueof{/pgfplots/mark list fill}},mark=10-pointed star\\        
+    },
+    perf/.style={
+        axis lines=middle, 
+        axis x line*=bottom,
+        axis y line*=left,
+        cycle list/Dark2,
+        cycle multiindex* list={
+                my marks\nextlist
+                Dark2\nextlist
+                linestyles\nextlist
+            },
+        mark list fill={.!75!white},
+        tick label style={font=\footnotesize},
+        x axis line style={-},
+        y axis line style={-}
+    }
+}
+
+\pgfplotstableread[col sep=comma]{../data/road_usa.csv}\DataUSA
+\pgfplotstabletranspose[colnames from=IDP, input colnames to=IDP]\TransposedDataUSA\DataUSA
+
+\pgfplotstableread[col sep=comma]{../data/hugebubbles_00020.csv}\DataHUGE
+\pgfplotstabletranspose[colnames from=IDP, input colnames to=IDP]\TransposedDataHUGE\DataHUGE
+
+\pgfplotstableread[col sep=comma]{../data/delaunay_n24.csv}\DataDEL
+\pgfplotstabletranspose[colnames from=IDP, input colnames to=IDP]\TransposedDataDEL\DataDEL
+
+\pgfplotstableread[col sep=comma]{../data/europe_osm.csv}\DataOSM
+\pgfplotstabletranspose[colnames from=IDP, input colnames to=IDP]\TransposedDataOSM\DataOSM
+
+\pgfplotstableread[col sep=comma]{../data/rgg_n_2_24_s0.csv}\DataRGG
+\pgfplotstabletranspose[colnames from=IDP, input colnames to=IDP]\TransposedDataRGG\DataRGG
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[perf, legend style={
+                    legend columns=6, font=\footnotesize,
+                    at={(0.5,-0.2)}, anchor=north, draw=none
+                },
+            %title=AMD EPYC 9754{, $n = 2^{27}$},
+            xlabel=$P$,
+            ylabel=$Time (s)$,
+            x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+            y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+            xmode=log, log basis x=2,
+            ymode=log, % log basis y=2,
+            ymin=0.01,
+            xticklabels={1,2,4,8,16,32,64,128}]
+        \pgfplotsinvokeforeach{ref,2,6,10}{
+            \addplot+[] table[x=IDP,y=#1]{\TransposedDataUSA};
+            \addlegendentry{#1}
+        }
+    \end{axis}
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+    \begin{axis}[perf, legend style={
+                    legend columns=6, font=\footnotesize,
+                    at={(0.5,-0.2)}, anchor=north, draw=none
+                },
+            %title=AMD EPYC 9754{, $n = 2^{27}$},
+            xlabel=$P$,
+            ylabel=$Time (s)$,
+            x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+            y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+            xmode=log, log basis x=2,
+            ymode=log, % log basis y=2,
+            ymin=0.01,
+            xticklabels={1,2,4,8,16,32,64,128}]
+        \pgfplotsinvokeforeach{ref,2,6,10}{
+            \addplot+[] table[x=IDP,y=#1]{\TransposedDataHUGE};
+            \addlegendentry{#1}
+        }
+    \end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{axis}[perf, legend style={
+                    legend columns=6, font=\footnotesize,
+                    at={(0.5,-0.2)}, anchor=north, draw=none
+                },
+            %title=AMD EPYC 9754{, $n = 2^{27}$},
+            xlabel=$P$,
+            ylabel=$Time (s)$,
+            x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+            y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+            xmode=log, log basis x=2,
+            ymode=log, % log basis y=2,
+            ymin=0.01,
+            xticklabels={1,2,4,8,16,32,64,128}]
+        \pgfplotsinvokeforeach{ref,2,6,10}{
+            \addplot+[] table[x=IDP,y=#1]{\TransposedDataDEL};
+            \addlegendentry{#1}
+        }
+    \end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{axis}[perf, legend style={
+                    legend columns=6, font=\footnotesize,
+                    at={(0.5,-0.2)}, anchor=north, draw=none
+                },
+            %title=AMD EPYC 9754{, $n = 2^{27}$},
+            xlabel=$P$,
+            ylabel=$Time (s)$,
+            x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+            y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+            xmode=log, log basis x=2,
+            ymode=log, % log basis y=2,
+            ymin=0.01,
+            xticklabels={1,2,4,8,16,32,64,128}]
+        \pgfplotsinvokeforeach{ref,2,6,10}{
+            \addplot+[] table[x=IDP,y=#1]{\TransposedDataOSM};
+            \addlegendentry{#1}
+        }
+    \end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{axis}[perf, legend style={
+                    legend columns=6, font=\footnotesize,
+                    at={(0.5,-0.2)}, anchor=north, draw=none
+                },
+            %title=AMD EPYC 9754{, $n = 2^{27}$},
+            xlabel=$P$,
+            ylabel=$Time (s)$,
+            x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+            y label style={at={(axis description cs:-0.1,.5)},rotate=90,anchor=south},
+            xmode=log, log basis x=2,
+            ymode=log, % log basis y=2,
+            ymin=0.01,
+            xticklabels={1,2,4,8,16,32,64,128}]
+        \pgfplotsinvokeforeach{ref,2,6,10}{
+            \addplot+[] table[x=IDP,y=#1]{\TransposedDataRGG};
+            \addlegendentry{#1}
+        }
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}
