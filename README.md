@@ -6,21 +6,21 @@ The scoring system we use works as follows. On each exercise, the submissions ar
 
 ## Standings
 
-To know your team's ID, check the feedback from the first round on Moodle.
+To know your team's ID, check the feedback from the first round on Moodle. The names listed were included with the permission of the individuals.
 
-| ID | Points | |
-| -: | -: | -: |
-| 10 | 103| &#129351; |
-| 2 | 93.5 | &#129352; |
-| 6 | 82.5 | &#129353; |
-| 9 | 54 | |
-| 11 | 53.5 | |
-| 3 | 46.5 | |
-| 14 | 38 | |
-| 8 | 37.5 | |
-| 13 | 25.5 | |
-| 7 | 17 | |
-| 4 | 6 | |
-| 12 | 5.5 | |
-| 5 | 5 | |
-| 1 | 3 | |
+| ID | Points | Name | |
+| -: | -: | :- | -: |
+| 10 | 103 | Leo Silz | &#129351; |
+| 2 | 93.5 | | &#129352; |
+| 6 | 82.5 | | &#129353; |
+| 9 | 54 | | |
+| 11 | 53.5 | | |
+| 3 | 46.5 | | |
+| 14 | 38 | | |
+| 8 | 37.5 | | |
+| 13 | 25.5 | | |
+| 7 | 17 | | |
+| 4 | 6 | | |
+| 12 | 5.5 | | |
+| 5 | 5 | | |
+| 1 | 3 | | |
