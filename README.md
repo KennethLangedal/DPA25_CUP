@@ -12,7 +12,7 @@ To know your team's ID, check the feedback from the first round on Moodle. The n
 | -: | -: | :- | -: |
 | 10 | 103 | Leo Silz | &#129351; |
 | 2 | 93.5 | | &#129352; |
-| 6 | 82.5 | | &#129353; |
+| 6 | 82.5 | Jacob Rose and Eric Waldherr | &#129353; |
 | 9 | 54 | | |
 | 11 | 53.5 | | |
 | 3 | 46.5 | | |
